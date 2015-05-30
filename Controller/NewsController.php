@@ -13,7 +13,6 @@ class NewsController extends Controller
      */
     public function detailAction($id)
     {
-
         return ['news' => $this->get('lpi.news.repository.news')->find($id)];
     }
 

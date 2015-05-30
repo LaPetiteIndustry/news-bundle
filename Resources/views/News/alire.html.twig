@@ -1,6 +1,6 @@
 <div class="row">
 
-    {%  for news in articles %}
+    {% for news in articles %}
 
         <div class="col-md-6">
             <div class="blocmodule blocB module-actus">
@@ -16,7 +16,8 @@
 
                                 <p class="date">{{ frenchDate(news.date) }} <span>{{ frenchTime(news.date) }}</span></p>
 
-                                <p><a class="btn btn-light text-uppercase" href="{{ url('news_detail', { 'id': news.id, 'slug':news.slug }) }}"
+                                <p><a class="btn btn-light text-uppercase"
+                                      href="{{ url('news_detail', { 'id': news.id, 'slug':news.slug }) }}"
                                       role="button"><span>Lire la suite</span></a></p>
                             </div>
                         </div>
@@ -26,6 +27,6 @@
             </div>
         </div>
 
-    {%  endfor %}
+    {% endfor %}
 
-    </div><!-- /.row -->
+</div><!-- /.row -->
