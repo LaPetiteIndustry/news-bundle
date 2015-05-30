@@ -22,7 +22,7 @@ class NewsController extends Controller
     public function archivesAction()
     {
         $articles = $this->get('lpi.news.repository.news')->findBy([],['date'=>'desc']);
-
+        $data = [];
         foreach($articles as $article){
             $date = $article->getDate();
             $year = $date->format("Y");
