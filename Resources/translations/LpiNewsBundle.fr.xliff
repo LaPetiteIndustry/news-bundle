@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+
+            <trans-unit id="news.form.label_title">
+                <source>form.label_title</source>
+                <target>Titre</target>
+            </trans-unit>
+
+            <trans-unit id="news.breadcrumb.link_news_list">
+                <source>breadcrumb.link_news_list</source>
+                <target>Articles</target>
+            </trans-unit>
+
+
+            <trans-unit id="news.form.label_header">
+                <source>form.label_header</source>
+                <target>Sur titre</target>
+            </trans-unit>
+
+            <trans-unit id="news.form.label_content">
+                <source>form.label_content</source>
+                <target>Contenu</target>
+            </trans-unit>
+
+            <trans-unit id="news.form.label_date">
+                <source>form.label_date</source>
+                <target>Date</target>
+            </trans-unit>
+
+            <trans-unit id="news.form.label_image">
+                <source>form.label_image</source>
+                <target>Image</target>
+            </trans-unit>
+
+            <trans-unit id="news.form.label_galerie">
+                <source>form.label_galerie</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="list.label_title">
+                <source>list.label_title</source>
+                <target>Titre</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

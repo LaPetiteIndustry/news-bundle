@@ -1,0 +1,164 @@
+{% extends "@LpiSite/Default/structure.html.twig" %}
+
+{% set page = 'article' %}
+
+{% block title %}
+    {{ news.title }}
+{% endblock %}
+
+{% block content %}
+
+    <!-- new row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('homepage') }}">Accueil</a></li>
+                <li><a href="{{ url('news_archive') }}">Actus</a></li>
+                <li class="active titrearticle">{{ news.title }}</li>
+            </ol>
+            <h1 class="titre">Actus</h1>
+        </div>
+    </div><!-- /.row -->
+    {% if news.gallery %}
+ <!-- new row -->    
+       <div class="row visible-xs">
+           <div class="col-xs-12">
+                           <div class="col-xs-12" id="slideshow-1">
+                             <div id="cycle-1" class="cycle-slideshow"
+                                    data-cycle-slides="> div"
+                                    data-cycle-timeout="0"
+                                    data-cycle-fx="scrollHorz"
+                                    data-cycle-pager=".cycle-pager"
+                                    data-cycle-prev="#slideshow-1 .cycle-prev"
+                                    data-cycle-next="#slideshow-1 .cycle-next"
+                                    data-cycle-swipe="true"
+                                    data-cycle-swipe-fx="scrollHorz"
+                                    >
+
+
+                                    {% for images in news.gallery.galleryHasMedias %}
+                                       <div><img src="{% path images.media, 'big' %}" class="img-responsive"/></div>
+                                   {% endfor %}
+
+
+                                   <a href="#" class="cycle-prev"></a>
+                                   <a href="#" class="cycle-next"></a>
+                                </div>
+                           </div>
+                           <div class="col-xs-12"><div class="cycle-pager cycle-pager-mobile external visible-xs"></div>
+                           </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row hidden-xs">
+            <div class="col-sm-9 article-bigimg">
+                <img src="{% path news.gallery.galleryHasMedias[0].media, 'big' %}" data-small="{% path news.gallery.galleryHasMedias[0].media, 'small' %}" id="bigimg"/>
+            </div>
+
+            <div class="col-sm-3 article-smallimg">
+                {% for images in news.gallery.galleryHasMedias|slice(1, 3) %}
+                    <a href="{% path images.media, 'big' %}"><img src="{% path images.media, 'small' %}"/></a>
+                {% endfor %}
+            </div>
+        </div><!-- /.row -->
+    {% endif %}
+
+    <!-- new row -->
+    <div class="row">
+        <div class="col-xs-12 detail-article">
+            <div class="socials-mobile pull-right visible-xs"><a
+                        href="https://www.facebook.com/sharer.php?u={{ app.request.schemeAndHttpHost~app.request.requestUri }}"
+                        target="_blank"><i
+                            class="fa fa-facebook"></i></a> <a
+                        href="https://twitter.com/share?url={{ app.request.schemeAndHttpHost~app.request.requestUri }}&text={{ news.title }}&via=mmarenaofficiel"
+                        target="_blank"><i
+                            class="fa fa-twitter"></i></a>
+            </div>
+            <div class="socials pull-right hidden-xs"><span>Partager</span> <a
+                        href="https://www.facebook.com/sharer.php?u={{ app.request.schemeAndHttpHost~app.request.requestUri }}"
+                        target="_blank"><i
+                            class="fa fa-facebook"></i></a> <a
+                        href="https://twitter.com/share?url={{ app.request.schemeAndHttpHost~app.request.requestUri }}"
+                        target="_blank"><i
+                            class="fa fa-twitter"></i></a>
+            </div>
+            <h1 class="titrearticle">{{ news.title }}</h1>
+
+            <h3>{{ frenchDate(news.date) }} <span>{{ frenchTime(news.date) }}</span></h3>
+
+            <div class="clearfix"></div>
+
+            <div class="contenu">
+                {{ news.content|raw }}
+            </div>
+        </div>
+    </div><!-- /.row -->
+    <!-- new row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <h6>A lire également</h6>
+        </div>
+    </div><!-- /.row -->
+    <!-- new row -->
+    {{ sonata_block_render({ 'type': 'lpi.news.recent_articles' }, {'number':2,'template':'LpiNewsBundle:News:alire.html.twig','articleIdContext':news.id}) }}
+
+    <!-- new row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="pull-right"><a href="{{ url('news_archive') }}" class="btn btn-dark btn-big text-uppercase"><i
+                            class="fa fa-inbox fa-lg"></i>&nbsp;&nbsp;&nbsp;voir les archives&nbsp;&nbsp;&nbsp;<i
+                            class="fa fa-chevron-right fa-lg"></i></a></p>
+        </div>
+    </div><!-- /.row -->
+
+
+
+{% endblock %}
+{% block javascriptBasDePage %}
+
+        $('.article-smallimg a').on('click', function(event){
+
+
+            var largeImage = $('#bigimg');
+            var largeImageSrc = $('#bigimg').attr('src');
+            var largeImageSrcMini = $('#bigimg').attr('data-small');
+
+            var smallImage = $('img', $(this));
+            var smallImageContainer = $(this);
+            var smallImageSrcMini =   smallImage.attr('src');
+            var smallImageSrcLink =   $(this).attr('href');
+
+
+            event.preventDefault();
+
+
+
+            largeImage.fadeOut('fast', function () {
+                largeImage.attr('src', smallImageSrcLink);
+                largeImage.attr('data-small', smallImageSrcMini);
+
+
+                smallImageContainer.attr('href', largeImageSrc);
+                smallImage.attr('src', largeImageSrcMini);
+                largeImage.fadeIn('fast');
+            });
+
+
+
+            smallImage.attr('src', largeImageSrcMini);
+            smallImageContainer.attr('href', largeImageSrc);
+
+
+
+        });
+
+$('.titrearticle').each(function(){
+    var mmarenatitle = $(this).text().replace(/MMARENA/g,"MMA<small>RENA</small>");
+    $(this).html(mmarenatitle);
+});
+
+{% endblock %}
+{% block tagcontainer %}
+page page-article
+{% endblock %}

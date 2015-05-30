@@ -1,0 +1,31 @@
+<div class="row">
+
+    {%  for news in articles %}
+
+        <div class="col-md-6">
+            <div class="blocmodule blocB module-actus">
+                <!-- Carousel  ================================================== -->
+                <div id="actus-carousel" class="carousel article-inner">
+                    <div class="carousel-inner">
+                        <div class="item active"
+                             style="background-image:url('{% path news.image, 'small' %}')">
+                            <div class="carousel-caption">
+                                <h3 class="text-uppercase">{{ news.header }}</h3>
+
+                                <h1 class="text-uppercase titrearticle">{{ news.title }}</h1>
+
+                                <p class="date">{{ frenchDate(news.date) }} <span>{{ frenchTime(news.date) }}</span></p>
+
+                                <p><a class="btn btn-light text-uppercase" href="{{ url('news_detail', { 'id': news.id, 'slug':news.slug }) }}"
+                                      role="button"><span>Lire la suite</span></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.carousel -->
+            </div>
+        </div>
+
+    {%  endfor %}
+
+    </div><!-- /.row -->

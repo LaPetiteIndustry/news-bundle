@@ -1,0 +1,30 @@
+{
+  "name": "lpi-lab/news-bundle",
+  "description": "LpiNewsBundle",
+  "type" : "symfony-bundle",
+  "homepage": "http://www.lapetiteindustry.com",
+  "license": "MIT",
+  "authors": [{
+      "name": "La Petite Industry",
+      "email": "contact@lapetiteindustry.com",
+      "homepage": "http://www.lapetiteindustry.com"}],
+  "require": {
+    "php": ">=5.3.3",
+    "symfony/symfony": "2.6.*",
+    "sonata-project/admin-bundle": "2.3.*",
+    "sensio/framework-extra-bundle": "3.0.*",
+    "sonata-project/media-bundle": "2.3.*",
+    "lpi-lab/kernel": "~1.0.0"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "3.0.*@dev"
+  },
+  "autoload": {
+    "psr-4": { "Lpi\\NewsBundle\\": "" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.*-dev"
+    }
+  }
+}

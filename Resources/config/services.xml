@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="lpi.news.repository.news" class="Lpi\NewsBundle\Repository\NewsRepository">
+            <factory service="doctrine.orm.default_entity_manager" method="getRepository"/>
+            <argument>%lpi.news.admin.news.entity%</argument>
+        </service>
+        <service id="lpi.news.recent_articles" class="Lpi\NewsBundle\Block\RecentArticleService">
+            <tag name="sonata.block"/>
+            <argument>lpi.news.recent_articles</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="lpi.news.repository.news"/>
+        </service>
+    </services>
+</container>
+
+
+

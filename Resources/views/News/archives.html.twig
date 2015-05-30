@@ -1,0 +1,92 @@
+{% extends "@LpiSite/Default/structure.html.twig" %}
+
+{% set page = 'article' %}
+
+{% block title %}
+    Archives
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- new row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('homepage') }}">Accueil</a></li>
+                <li class="active">Archives</li>
+            </ol>
+        </div>
+    </div><!-- /.row -->
+    <!-- new row -->
+    <div class="row">
+        <div class="col-xs-12">
+
+
+            <div class="panel-group" id="archives">
+                {% for year, months in articles %}
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#archives"
+                                                       href="#collapse{{ year }}">{{ year }}</a></h4>
+                        </div>
+
+
+                        <div id="collapse{{ year }}" class="panel-collapse collapse {% if year == "now"|date('Y') %}in{%  endif %}">
+                            {% for month, articles in months %}
+                                <div class="panel-body">
+                                    <!-- nested accordion -->
+                                    <div class="panel-group" id="accordion{{ year }}">
+
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title"><a class="collapse in" data-toggle="collapse"
+                                                                           data-parent="#accordion{{ year }}"
+                                                                           href="#collapseInner{{ month }}{{ year }}">
+                                                        {{ displayMonthName(month) }}
+                                                    </a></h4>
+                                            </div>
+
+                                            <div id="collapseInner{{ month }}{{ year }}"
+                                                 class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <ul>
+                                                        {% for article in articles %}
+                                                            <li>
+                                                                <a class="titrearticle" href="{{ url('news_detail', {'id':article.id, 'slug':article.slug}) }}"><span>{{ frenchDate(article.date) }}</span>
+                                                                    - {{ article.title }}</a></li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!-- /nested accordion -->
+                                </div>
+                            {% endfor %}
+                        </div>
+
+
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
+
+        </div>
+    </div><!-- /.row -->
+{% endblock %}
+{% block javascriptBasDePage %}
+
+
+
+{% endblock %}
+{% block tagcontainer %}
+    page page-archives
+{% endblock %}
