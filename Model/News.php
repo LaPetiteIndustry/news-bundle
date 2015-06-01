@@ -1,6 +1,7 @@
 <?php
 namespace Lpi\NewsBundle\Model;
 
+use Application\Sonata\MediaBundle\Entity\Gallery;
 use Lpi\Bundle\SearchBundle\Model\IndexableInterface;
 use Lpi\Kernel\Utils\Text;
 use Sonata\MediaBundle\Model\MediaInterface;
@@ -10,9 +11,11 @@ abstract class News implements NewsInterface, IndexableInterface
     protected $title;
     protected $header;
     protected $content;
+    protected $excerpt;
     protected $rawContent;
     protected $contentFormatter;
     protected $image;
+    protected $gallery;
     protected $createdAt;
     protected $updatedAt;
     protected $date;
@@ -47,6 +50,21 @@ abstract class News implements NewsInterface, IndexableInterface
     public function setHeader($header)
     {
         $this->header = $header;
+    }
+    /**
+     * @return mixed
+     */
+    public function getExcerpt()
+    {
+        return $this->excerpt;
+    }
+
+    /**
+     * @param mixed $header
+     */
+    public function setExcerpt($excerpt)
+    {
+        $this->excerpt = $excerpt;
     }
 
     /**
@@ -193,4 +211,19 @@ abstract class News implements NewsInterface, IndexableInterface
         return Text::slugify($this->getTitle());
     }
 
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery(Gallery $gallery)
+    {
+        $this->gallery = $gallery;
+    }
 }

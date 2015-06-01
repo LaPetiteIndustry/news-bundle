@@ -28,6 +28,10 @@
                 <source>form.label_date</source>
                 <target>Date</target>
             </trans-unit>
+            <trans-unit id="news.form.label_excerpt">
+                <source>form.label_excerpt</source>
+                <target>Chapeau</target>
+            </trans-unit>
 
             <trans-unit id="news.form.label_image">
                 <source>form.label_image</source>

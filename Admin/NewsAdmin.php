@@ -16,6 +16,7 @@ class NewsAdmin  extends Admin {
         $form
             ->add('title')
             ->add('header')
+            ->add('excerpt')
             ->add('date', 'sonata_type_datetime_picker', ['dp_language' => 'fr_FR'])
             ->add('content', 'sonata_formatter_type', array(
                 'event_dispatcher' => $form->getFormBuilder()->getEventDispatcher(),

@@ -3,21 +3,19 @@
 
     {% for news in articles %}
 
+        <div class="{% if loop.index == 1 %}active{% endif %}">
 
-    <div class="{% if loop.index == 1 %}active{% endif %}">
+            <img src="{% path news.image, 'small' %}"/>
 
-        <img src="{% path news.image, 'small' %}"/>
+            {{ news.header }}
 
-        {{ news.header }}
+            {{ news.title|truncate(40) }}
 
-        {{ news.title|truncate(40) }}
+            {{ frenchDate(news.date) }} {{ frenchTime(news.date) }}
 
-        {{ frenchDate(news.date) }} {{ frenchTime(news.date) }}
+            <a class="btn btn-light text-uppercase" href="{{ url('news_detail', { 'id': news.id, 'slug':news.slug }) }}"
+               role="button"><span>Lire la suite</span></a>
 
-        <a class="btn btn-light text-uppercase" href="{{ url('news_detail', { 'id': news.id, 'slug':news.slug }) }}"
-           role="button"><span>Lire la suite</span></a>
-
-        {% endfor %}
-    </div>
-
+        </div>
+    {% endfor %}
 </div>

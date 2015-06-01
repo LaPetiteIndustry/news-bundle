@@ -1,6 +1,4 @@
-{% extends "@LpiSite/Default/structure.html.twig" %}
-
-{% set page = 'article' %}
+{% extends "@App/structure.html.twig" %}
 
 {% block title %}
     {{ news.title }}
@@ -20,35 +18,13 @@
         </div>
     </div><!-- /.row -->
     {% if news.gallery %}
- <!-- new row -->    
-       <div class="row visible-xs">
-           <div class="col-xs-12">
-                           <div class="col-xs-12" id="slideshow-1">
-                             <div id="cycle-1" class="cycle-slideshow"
-                                    data-cycle-slides="> div"
-                                    data-cycle-timeout="0"
-                                    data-cycle-fx="scrollHorz"
-                                    data-cycle-pager=".cycle-pager"
-                                    data-cycle-prev="#slideshow-1 .cycle-prev"
-                                    data-cycle-next="#slideshow-1 .cycle-next"
-                                    data-cycle-swipe="true"
-                                    data-cycle-swipe-fx="scrollHorz"
-                                    >
 
 
-                                    {% for images in news.gallery.galleryHasMedias %}
-                                       <div><img src="{% path images.media, 'big' %}" class="img-responsive"/></div>
-                                   {% endfor %}
+        {% for images in news.gallery.galleryHasMedias %}
+           <div><img src="{% path images.media, 'big' %}" class="img-responsive"/></div>
+       {% endfor %}
 
 
-                                   <a href="#" class="cycle-prev"></a>
-                                   <a href="#" class="cycle-next"></a>
-                                </div>
-                           </div>
-                           <div class="col-xs-12"><div class="cycle-pager cycle-pager-mobile external visible-xs"></div>
-                           </div>
-            </div>
-        </div>
         <!-- /.row -->
 
         <div class="row hidden-xs">
@@ -115,50 +91,4 @@
 
 
 {% endblock %}
-{% block javascriptBasDePage %}
 
-        $('.article-smallimg a').on('click', function(event){
-
-
-            var largeImage = $('#bigimg');
-            var largeImageSrc = $('#bigimg').attr('src');
-            var largeImageSrcMini = $('#bigimg').attr('data-small');
-
-            var smallImage = $('img', $(this));
-            var smallImageContainer = $(this);
-            var smallImageSrcMini =   smallImage.attr('src');
-            var smallImageSrcLink =   $(this).attr('href');
-
-
-            event.preventDefault();
-
-
-
-            largeImage.fadeOut('fast', function () {
-                largeImage.attr('src', smallImageSrcLink);
-                largeImage.attr('data-small', smallImageSrcMini);
-
-
-                smallImageContainer.attr('href', largeImageSrc);
-                smallImage.attr('src', largeImageSrcMini);
-                largeImage.fadeIn('fast');
-            });
-
-
-
-            smallImage.attr('src', largeImageSrcMini);
-            smallImageContainer.attr('href', largeImageSrc);
-
-
-
-        });
-
-$('.titrearticle').each(function(){
-    var mmarenatitle = $(this).text().replace(/MMARENA/g,"MMA<small>RENA</small>");
-    $(this).html(mmarenatitle);
-});
-
-{% endblock %}
-{% block tagcontainer %}
-page page-article
-{% endblock %}

@@ -1,7 +1,8 @@
 <?php
 namespace Lpi\NewsBundle\Model;
 
-use Sonata\ClassificationBundle\Model\CategoryInterface;
+
+use Application\Sonata\MediaBundle\Entity\Gallery;
 use Sonata\MediaBundle\Model\GalleryInterface;
 use Sonata\MediaBundle\Model\MediaInterface;
 
@@ -14,6 +15,12 @@ interface NewsInterface
 
     public function getImage();
 
+    public function getExcerpt();
+
+    public function getGallery();
+
+    public function setGallery(Gallery $gallery);
+
     public function setImage(MediaInterface $image);
 
     /**
@@ -22,6 +29,8 @@ interface NewsInterface
      * @param string $name
      */
     public function setTitle($name);
+
+    public function setExcerpt($excerpt);
 
     /**
      * Get name
@@ -38,10 +47,10 @@ interface NewsInterface
     public function getHeader();
 
     /**
-       * Set header
-       *
-       * @param string $header
-       */
+     * Set header
+     *
+     * @param string $header
+     */
     public function setHeader($header);
 
     /**
