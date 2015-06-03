@@ -12,9 +12,11 @@ abstract class News implements NewsInterface, IndexableInterface
     protected $header;
     protected $content;
     protected $excerpt;
+    protected $youtubeId;
     protected $rawContent;
     protected $contentFormatter;
     protected $image;
+    protected $image_slider;
     protected $gallery;
     protected $createdAt;
     protected $updatedAt;
@@ -34,6 +36,22 @@ abstract class News implements NewsInterface, IndexableInterface
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutubeId()
+    {
+        return $this->youtubeId;
+    }
+
+    /**
+     * @param mixed $youtubeId
+     */
+    public function setYoutubeId($youtubeId)
+    {
+        $this->youtubeId = $youtubeId;
     }
 
     /**
@@ -133,6 +151,21 @@ abstract class News implements NewsInterface, IndexableInterface
     public function setImage(MediaInterface $image)
     {
         $this->image = $image;
+    }
+    /**
+     * @return mixed
+     */
+    public function getImageSlider()
+    {
+        return $this->image_slider;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImageSlider(MediaInterface $image)
+    {
+        $this->image_slider = $image;
     }
 
     /**

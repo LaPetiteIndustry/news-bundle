@@ -7,13 +7,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class NewsAdmin  extends Admin {
+class NewsAdmin extends Admin
+{
 
     protected $translationDomain = 'LpiNewsBundle';
 
     protected function configureFormFields(FormMapper $form)
     {
+
         $form
+            ->with($this->trans('Informations'), array('class' => 'col-md-7'))
             ->add('title')
             ->add('header')
             ->add('excerpt')
@@ -30,10 +33,12 @@ class NewsAdmin  extends Admin {
                 'target_field' => 'content',
                 'listener' => true,
             ))
+            ->add('youtubeId')
+            ->end()
+            ->with($this->trans('Images'), array('class' => 'col-md-5'))
             ->add('image', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']])
-            ->add('gallery', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']])
-
-        ;
+            ->add('image_slider', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'slider']])
+            ->add('gallery', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']]);
     }
 
     protected function configureListFields(ListMapper $list)

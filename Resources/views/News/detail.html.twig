@@ -6,17 +6,6 @@
 
 {% block content %}
 
-    <!-- new row -->
-    <div class="row">
-        <div class="col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="{{ url('homepage') }}">Accueil</a></li>
-                <li><a href="{{ url('news_archive') }}">Actus</a></li>
-                <li class="active titrearticle">{{ news.title }}</li>
-            </ol>
-            <h1 class="titre">Actus</h1>
-        </div>
-    </div><!-- /.row -->
     {% if news.gallery %}
 
 
@@ -70,13 +59,10 @@
             </div>
         </div>
     </div><!-- /.row -->
-    <!-- new row -->
-    <div class="row">
-        <div class="col-xs-12">
-            <h6>A lire également</h6>
-        </div>
-    </div><!-- /.row -->
-    <!-- new row -->
+
+
+    <h6>A lire également</h6>
+
     {{ sonata_block_render({ 'type': 'lpi.news.recent_articles' }, {'number':2,'template':'LpiNewsBundle:News:alire.html.twig','articleIdContext':news.id}) }}
 
     <!-- new row -->
