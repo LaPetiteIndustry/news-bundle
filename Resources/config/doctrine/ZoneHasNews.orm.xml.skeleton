@@ -9,14 +9,13 @@
             association mapping  : http://www.doctrine-project.org/projects/orm/2.0/docs/reference/association-mapping/en
     -->
     <entity
-        name="Application\Lpi\NewsBundle\Entity\News"
-        table="lpi__news"
+        name="Application\Lpi\NewsBundle\Entity\ZoneHasNews"
+        table="lpi__zone_news"
         >
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
-
 
     </entity>
 </doctrine-mapping>

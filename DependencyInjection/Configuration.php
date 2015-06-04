@@ -38,7 +38,9 @@ class Configuration implements ConfigurationInterface
             ->arrayNode('class')
             ->addDefaultsIfNotSet()
             ->children()
-            ->scalarNode('news')->defaultValue('Application\\Lpi\\NewsBundle\\Entity\\News')->end()
+                ->scalarNode('news')->defaultValue('Application\\Lpi\\NewsBundle\\Entity\\News')->end()
+                ->scalarNode('zone_has_news')->defaultValue('Application\\Lpi\\NewsBundle\\Entity\\ZoneHasNews')->end()
+                ->scalarNode('zone')->defaultValue('Application\\Lpi\\KernelBundle\\Entity\\Zone')->end()
             ->end()
             ->end()
             ->end();

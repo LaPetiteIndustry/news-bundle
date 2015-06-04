@@ -21,6 +21,7 @@ abstract class News implements NewsInterface, IndexableInterface
     protected $createdAt;
     protected $updatedAt;
     protected $date;
+    protected $zoneHasNews;
 
     /**
      * @return mixed

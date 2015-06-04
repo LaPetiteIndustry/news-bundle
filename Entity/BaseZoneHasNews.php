@@ -1,12 +1,10 @@
 <?php
 namespace Lpi\NewsBundle\Entity;
 
-use Lpi\NewsBundle\Model\News;
+use Lpi\NewsBundle\Model\ZoneHasNews;
 
-abstract class BaseNews extends News
+abstract class BaseZoneHasNews extends ZoneHasNews
 {
-//    protected $zones;
-
     public function prePersist()
     {
         $this->createdAt = new \DateTime();

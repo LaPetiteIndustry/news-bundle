@@ -7,9 +7,14 @@
         <parameter key="lpi.news.admin.news.class">Lpi\NewsBundle\Admin\NewsAdmin</parameter>
         <parameter key="lpi.news.admin.news.controller">LpiNewsBundle:NewsAdmin</parameter>
 
+        <parameter key="lpi.news.admin.zone_has_news.class">Lpi\NewsBundle\Admin\ZoneHasNewsAdmin</parameter>
+        <parameter key="lpi.news.admin.zone_has_news.controller">SonataAdminBundle:CRUD</parameter>
+
+
     </parameters>
 
     <services>
+
         <service id="lpi.news.admin.news" class="%lpi.news.admin.news.class%">
             <tag name="sonata.admin" manager_type="orm" group="News"
                  label="Articles"
@@ -19,6 +24,18 @@
             <argument></argument>
 
         </service>
+
+
+        <service id="lpi.news.admin.zone_has_news" class="%lpi.news.admin.zone_has_news.class%">
+            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" group="Structure"
+                 label="zone_has_news"
+                 label_translator_strategy="sonata.admin.label.strategy.underscore"/>
+            <argument/>
+            <argument>%lpi.news.admin.zone_has_news.entity%</argument>
+            <argument>%lpi.news.admin.zone_has_news.controller%</argument>
+        </service>
+
+
 
     </services>
 </container>
