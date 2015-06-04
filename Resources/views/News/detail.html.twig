@@ -10,15 +10,16 @@
 
 
         {% for images in news.gallery.galleryHasMedias %}
-           <div><img src="{% path images.media, 'big' %}" class="img-responsive"/></div>
-       {% endfor %}
+            <div><img src="{% path images.media, 'big' %}" class="img-responsive"/></div>
+        {% endfor %}
 
 
         <!-- /.row -->
 
         <div class="row hidden-xs">
             <div class="col-sm-9 article-bigimg">
-                <img src="{% path news.gallery.galleryHasMedias[0].media, 'big' %}" data-small="{% path news.gallery.galleryHasMedias[0].media, 'small' %}" id="bigimg"/>
+                <img src="{% path news.gallery.galleryHasMedias[0].media, 'big' %}"
+                     data-small="{% path news.gallery.galleryHasMedias[0].media, 'small' %}" id="bigimg"/>
             </div>
 
             <div class="col-sm-3 article-smallimg">
@@ -31,24 +32,16 @@
 
     <!-- new row -->
     <div class="row">
-        <div class="col-xs-12 detail-article">
-            <div class="socials-mobile pull-right visible-xs"><a
-                        href="https://www.facebook.com/sharer.php?u={{ app.request.schemeAndHttpHost~app.request.requestUri }}"
-                        target="_blank"><i
-                            class="fa fa-facebook"></i></a> <a
-                        href="https://twitter.com/share?url={{ app.request.schemeAndHttpHost~app.request.requestUri }}&text={{ news.title }}&via=mmarenaofficiel"
-                        target="_blank"><i
-                            class="fa fa-twitter"></i></a>
-            </div>
-            <div class="socials pull-right hidden-xs"><span>Partager</span> <a
-                        href="https://www.facebook.com/sharer.php?u={{ app.request.schemeAndHttpHost~app.request.requestUri }}"
-                        target="_blank"><i
-                            class="fa fa-facebook"></i></a> <a
-                        href="https://twitter.com/share?url={{ app.request.schemeAndHttpHost~app.request.requestUri }}"
-                        target="_blank"><i
-                            class="fa fa-twitter"></i></a>
-            </div>
+        <div class="col-xs-12">
             <h1 class="titrearticle">{{ news.title }}</h1>
+            {{ news.header }}
+            {{ news.excerpt }}
+
+            {% if news.youtubeId %}
+                    {{ news.youtubeId }}
+            {% endif %}
+
+            <img src="{% path news.image, 'big' %}" class="img-responsive"/>
 
             <h3>{{ frenchDate(news.date) }} <span>{{ frenchTime(news.date) }}</span></h3>
 
@@ -57,23 +50,15 @@
             <div class="contenu">
                 {{ news.content|raw }}
             </div>
+
         </div>
+        <!-- /.row -->
     </div><!-- /.row -->
 
 
     <h6>A lire également</h6>
 
     {{ sonata_block_render({ 'type': 'lpi.news.recent_articles' }, {'number':2,'template':'LpiNewsBundle:News:alire.html.twig','articleIdContext':news.id}) }}
-
-    <!-- new row -->
-    <div class="row">
-        <div class="col-xs-12">
-            <p class="pull-right"><a href="{{ url('news_archive') }}" class="btn btn-dark btn-big text-uppercase"><i
-                            class="fa fa-inbox fa-lg"></i>&nbsp;&nbsp;&nbsp;voir les archives&nbsp;&nbsp;&nbsp;<i
-                            class="fa fa-chevron-right fa-lg"></i></a></p>
-        </div>
-    </div><!-- /.row -->
-
 
 
 {% endblock %}
