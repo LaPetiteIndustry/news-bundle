@@ -149,7 +149,7 @@ abstract class News implements NewsInterface, IndexableInterface
     /**
      * @param mixed $image
      */
-    public function setImage(MediaInterface $image)
+    public function setImage(MediaInterface $image = null)
     {
         $this->image = $image;
     }
@@ -164,7 +164,7 @@ abstract class News implements NewsInterface, IndexableInterface
     /**
      * @param mixed $image
      */
-    public function setImageSlider(MediaInterface $image)
+    public function setImageSlider(MediaInterface $image = null)
     {
         $this->image_slider = $image;
     }
