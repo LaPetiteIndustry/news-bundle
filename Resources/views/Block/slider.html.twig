@@ -1,0 +1,59 @@
+<div id="slider">
+    <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullscreen-container"
+         style="background-color:#E9E9E9;padding:0px;">
+
+
+        <!-- START REVOLUTION SLIDER 4.6.5 fullscreen mode -->
+        <div id="rev_slider_1_1" class="rev_slider fullscreenbanner" style="display:none;">
+            <ul>
+                {% for article  in news %}
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1500"
+                        data-thumb="{% path article.imageSlider, 'main' %}" data-delay="13000" data-saveperformance="off"
+                        data-title="">
+                        <img src="{% path article.imageSlider, 'main' %}" alt="bg-for-slider" data-bgposition="center center"
+                             data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                        <div class="slider-encart">
+                            <p class="title">{{ article.title }}</p>
+
+                            <p>{{ article.excerpt }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="tp-bannertimer"></div>
+        </div>
+
+        <style scoped>
+            .tp-caption.twslidersmalltop, .twslidersmalltop {
+                font-size: 18px;
+                line-height: 20px;
+                font-family: Montserrat;
+                color: #fff;
+                background-color: #d5d5d7;
+                opacity: 0.7;
+                border-width: 0px;
+                border-color: rgb(0, 0, 0);
+                border-style: none;
+                padding: 10px;
+                width: 345px;
+            }
+
+            .tp-caption.twslidersmalltop .title {
+                font-size: 25px;
+                font-family: "ProximaNovaBold";
+                color: #af0000;
+            }
+
+        </style>
+
+
+    </div>
+
+    <!-- END REVOLUTION SLIDER -->
+</div>
+
+{% block javascriptEndBody %}
+    <script type='text/javascript' src='{{ asset('bundles/app/js/revslider/init.js') }}'></script>
+{% endblock %}

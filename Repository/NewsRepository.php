@@ -15,4 +15,10 @@ class NewsRepository extends EntityRepository
         $queryBuilder->setMaxResults($settings['number']);
         return $queryBuilder;
     }
+
+    public function listArticleForSlider($sliderCode)
+    {
+        return $this->createQueryBuilder("e")->getQuery()->execute();
+        return [];
+    }
 }

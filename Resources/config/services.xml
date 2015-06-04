@@ -9,9 +9,17 @@
             <factory service="doctrine.orm.default_entity_manager" method="getRepository"/>
             <argument>%lpi.news.admin.news.entity%</argument>
         </service>
+
         <service id="lpi.news.recent_articles" class="Lpi\NewsBundle\Block\RecentArticleService">
             <tag name="sonata.block"/>
             <argument>lpi.news.recent_articles</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="lpi.news.repository.news"/>
+        </service>
+
+        <service id="lpi.news.slider" class="Lpi\NewsBundle\Block\SliderService">
+            <tag name="sonata.block"/>
+            <argument>lpi.news.sliders</argument>
             <argument type="service" id="templating"/>
             <argument type="service" id="lpi.news.repository.news"/>
         </service>
