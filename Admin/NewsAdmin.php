@@ -38,7 +38,8 @@ class NewsAdmin extends Admin
             ->with($this->trans('Images'), array('class' => 'col-md-5'))
             ->add('image', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']])
             ->add('image_slider', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'slider']])
-            ->add('gallery', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']]);
+            ->add('gallery', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']])
+            ->end();
     }
 
     protected function configureListFields(ListMapper $list)
