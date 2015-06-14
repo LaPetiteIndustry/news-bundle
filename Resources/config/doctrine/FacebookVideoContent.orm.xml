@@ -5,7 +5,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Lpi\NewsBundle\Entity\FacebookVideoContent" table="lpi_facebook_video_content">
+    <entity name="Lpi\NewsBundle\Entity\FacebookVideoContent" table="lpi_facebook_video_content" repository-class="Lpi\NewsBundle\Repository\FacebookVideoContentRepository" >
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>

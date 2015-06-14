@@ -10,6 +10,14 @@
             <argument>%lpi.news.admin.news.entity%</argument>
         </service>
 
+
+        <service id="lpi.kernel.repository.facebook_video"
+                 class="Lpi\NewsBundle\Repository\FacebookVideoContentRepository">
+            <factory service="doctrine.orm.default_entity_manager" method="getRepository"/>
+            <argument>Lpi\NewsBundle\Entity\FacebookVideoContent</argument>
+        </service>
+
+
         <service id="lpi.news.recent_articles" class="Lpi\NewsBundle\Block\RecentArticleService">
             <tag name="sonata.block"/>
             <argument>lpi.news.recent_articles</argument>
@@ -23,6 +31,16 @@
             <argument type="service" id="templating"/>
             <argument type="service" id="lpi.news.repository.news"/>
         </service>
+
+        <service id="lpi.content.featured.facebook_video"
+                 class="Lpi\NewsBundle\Block\FeaturedFacebookVideoContentBlockService">
+            <tag name="sonata.block"/>
+            <argument/>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="lpi.kernel.repository.facebook_video"/>
+        </service>
+
+
     </services>
 </container>
 
