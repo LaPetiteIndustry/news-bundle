@@ -34,6 +34,7 @@ class NewsAdmin extends Admin
                 'listener' => true,
             ))
             ->add('youtubeId')
+            ->add('urlRedirection')
             ->end()
             ->with($this->trans('Images'), array('class' => 'col-md-5'))
             ->add('image', 'sonata_type_model_list', ['required' => false], ['link_parameters' => ['context' => 'news']])

@@ -13,6 +13,7 @@ abstract class News implements NewsInterface, IndexableInterface
     protected $content;
     protected $excerpt;
     protected $youtubeId;
+    protected $urlRedirection;
     protected $rawContent;
     protected $contentFormatter;
     protected $image;
@@ -260,4 +261,22 @@ abstract class News implements NewsInterface, IndexableInterface
     {
         $this->gallery = $gallery;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUrlRedirection()
+    {
+        return $this->urlRedirection;
+    }
+
+    /**
+     * @param mixed $urlRedirection
+     */
+    public function setUrlRedirection($urlRedirection)
+    {
+        $this->urlRedirection = $urlRedirection;
+    }
+
+
 }

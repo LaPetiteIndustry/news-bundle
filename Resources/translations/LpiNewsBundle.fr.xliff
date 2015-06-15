@@ -60,6 +60,16 @@
                 <target>Titre</target>
             </trans-unit>
 
+            <trans-unit id="form.label_youtube_id">
+                <source>form.label_youtube_id</source>
+                <target>Youtube Id</target>
+            </trans-unit>
+
+            <trans-unit id="form.label_url_redirection">
+                <source>form.label_url_redirection</source>
+                <target>Url de redirection</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
