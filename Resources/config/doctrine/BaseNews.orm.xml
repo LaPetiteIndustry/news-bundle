@@ -13,7 +13,8 @@
         <field name="date" column="date" type="datetime" nullable="false"/>
 
         <field name="content" column="header" type="text" nullable="true"/>
-        <field name="youtubeId" column="youtubeId" type="text" nullable="true"/>
+        <field name="youtubeId" column="youtubeId" type="string" nullable="true"/>
+        <field name="urlRedirection" column="urlRedirection" type="string" nullable="true"/>
         <field name="excerpt" column="excerpt" type="text" nullable="true"/>
         <field name="rawContent" type="text" column="raw_content"/>
         <field name="contentFormatter" type="string" column="content_formatter"/>
