@@ -21,18 +21,7 @@ class NewsAdmin extends Admin
             ->add('header')
             ->add('excerpt')
             ->add('date', 'sonata_type_datetime_picker', ['dp_language' => 'fr_FR'])
-            ->add('content', 'sonata_formatter_type', array(
-                'event_dispatcher' => $form->getFormBuilder()->getEventDispatcher(),
-                'format_field' => 'contentFormatter',
-                'source_field' => 'rawContent',
-                'source_field_options' => array(
-                    'horizontal_input_wrapper_class' => $this->getConfigurationPool()->getOption('form_type') == 'horizontal' ? 'col-lg-12' : '',
-                    'attr' => array('class' => $this->getConfigurationPool()->getOption('form_type') == 'horizontal' ? 'span10 col-sm-10 col-md-10' : '', 'rows' => 20)
-                ),
-                'ckeditor_context' => 'news',
-                'target_field' => 'content',
-                'listener' => true,
-            ))
+            ->add('content', 'ckeditor')
             ->add('youtubeId')
             ->add('urlRedirection')
             ->end()
