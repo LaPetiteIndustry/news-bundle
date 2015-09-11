@@ -14,8 +14,6 @@ abstract class News implements NewsInterface, IndexableInterface
     protected $excerpt;
     protected $youtubeId;
     protected $urlRedirection;
-    protected $rawContent;
-    protected $contentFormatter;
     protected $image;
     protected $image_slider;
     protected $gallery;

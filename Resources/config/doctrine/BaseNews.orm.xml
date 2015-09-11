@@ -16,8 +16,6 @@
         <field name="youtubeId" column="youtubeId" type="string" nullable="true"/>
         <field name="urlRedirection" column="urlRedirection" type="string" nullable="true"/>
         <field name="excerpt" column="excerpt" type="text" nullable="true"/>
-        <field name="rawContent" type="text" column="raw_content"/>
-        <field name="contentFormatter" type="string" column="content_formatter"/>
 
         <field name="updatedAt" column="updated_at" type="datetime"/>
         <field name="createdAt" column="created_at" type="datetime"/>
