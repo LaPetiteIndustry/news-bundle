@@ -14,7 +14,7 @@
     "sonata-project/admin-bundle": "2.3.*",
     "sensio/framework-extra-bundle": "3.0.*",
     "sonata-project/media-bundle": "2.3.*",
-    "lpi-lab/kernel-bundle": "1.2.*"
+    "lpi-lab/kernel-bundle": "^1"
   },
   "require-dev": {
     "symfony/phpunit-bridge": "3.0.*@dev"
